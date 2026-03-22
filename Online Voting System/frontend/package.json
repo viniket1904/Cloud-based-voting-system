@@ -1,0 +1,27 @@
+{
+  "name": "online-voting-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "powershell -Command \"if (Test-Path 'node_modules\\.vite') { Remove-Item -Path 'node_modules\\.vite' -Recurse -Force -ErrorAction SilentlyContinue; Write-Host 'Vite cache cleared' } else { Write-Host 'No cache to clear' }\"",
+    "dev:clean": "npm run clean && npm run dev"
+  },
+  "dependencies": {
+    "axios": "^1.13.5",
+    "face-api.js": "^0.22.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "vite": "^5.4.10"
+  }
+}
