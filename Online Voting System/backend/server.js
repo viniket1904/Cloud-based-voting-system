@@ -296,7 +296,7 @@ app.get('/api/health', (req, res) => res.json({ ok: true }));
 app.get('/api/test-email', async (req, res) => {
   try {
     // Reload env vars
-    require('dotenv').config();
+    
     
     const smtpUser = process.env.SMTP_USER?.trim();
     const smtpPass = process.env.SMTP_PASS?.trim();
