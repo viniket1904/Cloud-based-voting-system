@@ -9,18 +9,20 @@ const envPaths = [
   path.join(process.cwd(), 'backend', '.env'),  // backend/.env from root
 ];
 
-// Make sure we NEVER load .env.example (it's just a template)
 const examplePath = path.join(__dirname, '.env.example');
+const realEnvPath = path.join(__dirname, '.env');
+
 if (fs.existsSync(examplePath)) {
-  console.log('📋 Note: .env.example exists but will NOT be loaded (it\'s just a template)');
-  console.log('   Only .env file will be used for actual configuration');
-  console.log('   Current .env has:', {
-    SMTP_USER: fs.readFileSync(path.join(__dirname, '.env'), 'utf8').match(/SMTP_USER=(.+)/)?.[1]?.trim() || 'not found',
-    SMTP_PASS: '*** (hidden)'
-  });
+  console.log('📋 Note: .env.example exists but will NOT be loaded (template only)');
+
+  if (fs.existsSync(realEnvPath)) {
+    console.log('   Local .env file found');
+  } else {
+    console.log('   Using environment variables from Render');
+  }
+
   console.log('');
 }
-
 let envLoaded = false;
 let loadedEnvPath = null;
 
